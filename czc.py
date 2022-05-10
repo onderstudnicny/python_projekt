@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
+import re
 import czc_produkt
+
 
 class Czc:
     def __init__(self):
@@ -53,6 +55,5 @@ class Czc:
         product_urls.remove('https://www.czc.cz/javascript:;')
 
         for i in range(0,len(product_urls)):
-            p = produkt.Czc_produkt(product_urls[i])
-
-
+            p = czc_produkt.Czc_produkt(product_urls[i])
+        print(product_urls)

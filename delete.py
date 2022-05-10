@@ -4,11 +4,11 @@ db = mysql.connector.connect(
     host='127.0.0.1',
     user='root',
     passwd='',
-    database='mydatabase'
+    database='pythonproject_db'
 )
 
 mycursor = db.cursor()
 
-mycursor.execute('DELETE FROM graphicscards WHERE id_GraphicsCards>0')
+mycursor.execute('DELETE FROM graphicscards')
 
 db.commit()
