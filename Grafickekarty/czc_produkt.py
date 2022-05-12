@@ -1,9 +1,12 @@
 from bs4 import BeautifulSoup
-from django.shortcuts import render,redirect
 import requests
-import sqlite3
-import re
-import czc
+import os
+import django
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangoProject.settings')
+django.setup()
+
+from Grafickekarty.models import GraphicsCards
 
 class Czc_produkt:
     def __init__(self,url):
@@ -24,3 +27,5 @@ class Czc_produkt:
         price = price.find('span',class_='price-vatin').text.strip()
         price = price.replace(nonBreakSpace,'')
         price = price.replace('Kč','')
+
+        db = GraphicsCards(name=name, url=url, price=price, graphics_chip=graphics_chip)

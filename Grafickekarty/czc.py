@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from czc_produkt import Czc_produkt
+from Grafickekarty.czc_produkt import Czc_produkt
 import requests
 import re
 
@@ -54,5 +54,6 @@ def find_all_pr_czc():
     for i in range(0,len(product_urls)):
         c = Czc_produkt(product_urls[i])
     print(product_urls)
+
 if __name__ == '__main__':
     find_all_pr_czc()

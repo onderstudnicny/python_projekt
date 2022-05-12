@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-from mironet_product import Mironet_product
+from Grafickekarty.mironet_product import Mironet_product
 import requests
 import re
 
@@ -24,5 +24,6 @@ def find_all_pr_mironet():
                 product_urls.append(baseurl + link['href'] + '#parametry')
         for i in range(0,len(product_urls)):
             m = Mironet_product(product_urls[i])
+
 if __name__ == '__main__':
     find_all_pr_mironet()

@@ -1,8 +1,12 @@
 from bs4 import BeautifulSoup
 import requests
-import sqlite3
-import re
-import czc
+import os
+import django
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'djangoProject.settings')
+django.setup()
+
+from Grafickekarty.models import GraphicsCards
 
 class Mironet_product:
     def __init__(self,url):
@@ -25,4 +29,6 @@ class Mironet_product:
         price = price.find('span',class_='product_dph').text.strip()
         price = price.replace(nonBreakSpace,'')
         price = price.replace('Kč','')
-        
+
+        gc = GraphicsCards(name=name, url=url, price=price, graphics_chip=graphics_chip)
+        gc.save()
